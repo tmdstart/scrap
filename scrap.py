@@ -24,7 +24,7 @@ PAGE_SCRAPE_DELAY = 1 # 각 페이지 스크래핑 후 지연 시간 (초)
 # --- 데이터베이스 관련 함수 ---
 
 def connect_db():
-    """MySQL 데이터베이스에 연결하고 연결 객체와 커서 객체를 반환합니다."""
+    """MySQL DB연결 후 객체 반환."""
     db_con = pymysql.connect(host=DB_HOST,
                              user=DB_USER,
                              password=DB_PASSWORD,
@@ -82,7 +82,7 @@ def download_and_save_image(full_image_url, news_title, index, image_dir, patter
     return news_image_local_path
 
 def parse_news_item(item_soup, index):
-    """하나의 뉴스 아이템(BeautifulSoup 객체)에서 정보를 파싱합니다."""
+    """하나의 뉴스 아이템(BeautifulSoup 객체)에서 정보를 파싱."""
     title_tag = item_soup.select_one('dl > dd.articleSubject > a')
     image_tag = item_soup.select_one('dl > dt > a > img')
     summary_tag = item_soup.select_one('dl > dd.articleSummary')
@@ -139,7 +139,7 @@ def parse_news_item(item_soup, index):
 
 
 
-"""뉴스 스크래핑 및 데이터베이스 저장의 전체 과정을 실행합니다."""
+"""뉴스 스크래핑 및 데이터베이스 저장의 전체 과정을 실행"""
 db_con, db_cursor = connect_db()
 setup_image_directory(IMAGE_DIR)
 
@@ -152,7 +152,7 @@ for page_num in range(1, NUM_PAGES_TO_SCRAPE + 1):
 
     print(f"현재 페이지({page_num})에서 수집할 뉴스 기사 수: {len(news_items)}")
     if not news_items:
-        print(f"경고: {page_num} 페이지에서 뉴스 아이템을 찾을 수 없습니다. 셀렉터가 변경되었거나 마지막 페이지일 수 있습니다.")
+        print(f"경고: {page_num} 페이지에서 뉴스 아이템을 찾을 수 없습니다. 셀렉터가 변경  or 마지막 페이지.")
         # 더 이상 뉴스가 없으면 다음 페이지로 진행하지 않음
         break
 
@@ -169,4 +169,4 @@ for page_num in range(1, NUM_PAGES_TO_SCRAPE + 1):
         time.sleep(PAGE_SCRAPE_DELAY)
 
 db_con.close()
-print(f"\n데이터베이스 연결이 닫혔습니다. 총 {total_scraped_news}개의 뉴스 기사를 수집했습니다.")
+print(f"\nDB_CLOSE. 총 {total_scraped_news}개의 뉴스 기사를 수집했습니다.")
