@@ -19,7 +19,7 @@ IMAGE_DIR = r'C:\gitmain\scrap\images2' # Raw 문자열로 경로 지정
 NEWS_BASE_URL = "https://finance.naver.com/news/mainnews.naver?date=2024-10-25&page="
 NUM_PAGES_TO_SCRAPE = 5 # 수집할 페이지 수
 FILENAME_PATTERN = r'[\\/:"*?<>|]' # 파일명에 사용할 수 없는 문자 패턴
-PAGE_SCRAPE_DELAY = 1 # 각 페이지 스크래핑 후 지연 시간 (초)
+PAGE_SCRAPE_DELAY = 2 # 각 페이지 스크래핑 후 지연 시간 (초)
 
 # --- 데이터베이스 관련 함수 ---
 
