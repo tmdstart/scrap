@@ -170,3 +170,8 @@ for page_num in range(1, NUM_PAGES_TO_SCRAPE + 1):
 
 db_con.close()
 print(f"\nDB_CLOSE. 총 {total_scraped_news}개의 뉴스 기사를 수집했습니다.")
+
+
+
+
+
