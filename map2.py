@@ -29,7 +29,8 @@ with col1:
     st.write("25m²")
 
     st.subheader("보증금")
-    st.write("2,000만 원")
+    score= st.slider('내 점수 선택', 0, 2000,100)
+    st.text(f'score: {score}')
 
     st.subheader("월세")
     st.write("40만 원")
