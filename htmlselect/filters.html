@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>매물 조건 입력</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=SUIT:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    /* Specific styles for filters.html, overriding or extending style.css */
+    body {
+      background: #f5f7fa; /* Lighter background for forms */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Ensure it takes full viewport height */
+      padding: 20px 0;
+    }
+    .form-container {
+      max-width: 500px;
+      width: 100%;
+      margin: auto; /* Center it */
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .form-container h2 {
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+      display: flex;
+      align-items: center;
+    }
+    .form-group label i {
+      margin-right: 8px;
+      color: #3a86ff; /* Icon color */
+    }
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group select { /* Added styling for select */
+      width: calc(100% - 20px);
+      padding: 12px 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+      background-color: white; /* Ensure consistent background */
+      -webkit-appearance: none; /* Remove default arrow on WebKit browsers */
+      -moz-appearance: none; /* Remove default arrow on Firefox */
+      appearance: none; /* Remove default arrow */
+      background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20256%20512%22%3E%3Cpath%20fill%3D%22%23495057%22%20d%3D%22M192%20256L64%20128v256l128-128z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow */
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 12px;
+      padding-right: 30px; /* Make space for the arrow */
+    }
+    .form-group input::placeholder {
+      color: #bbb;
+    }
+    .checkbox-group { /* This might not be needed if all checkboxes are moved */
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+    }
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      font-weight: 400;
+      cursor: pointer;
+    }
+    .checkbox-group input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
+      flex-direction: column; /* Stack buttons vertically */
+    }
+    .button-group button {
+      padding: 14px 25px;
+      font-size: 18px;
+      font-weight: 700;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%; /* Full width */
+    }
+    .button-group button.submit-button {
+      background-color: #3a86ff;
+      color: white;
+    }
+    .button-group button.submit-button:hover {
+      background-color: #2a6edc;
+    }
+    .button-group a {
+        display: block;
+        text-align: center;
+        padding: 14px 25px;
+        font-size: 18px;
+        font-weight: 700;
+        border-radius: 8px;
+        background-color: #6c757d; /* A neutral color for the link button */
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+    .button-group a:hover {
+        background-color: #5a6268;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2><i class="fas fa-search-location"></i>매물 조건 입력</h2>
+
+    <form action="results.html" method="get">
+      <div class="form-group">
+        <label><i class="fas fa-map-marker-alt"></i>지역</label>
+        <input type="text" name="region" placeholder="예: 서울 강남구" required />
+      </div>
+
+      <div class="form-group">
+        <label><i class="fas fa-wallet"></i>보증금 (만원)</label>
+        <select name="deposit">
+          <option value="">선택 안함</option>
+          <option value="500">~500</option>
+          <option value="1000">~1,000</option>
+          <option value="2000">~2,000</option>
+          <option value="3000">~3,000</option>
+          <option value="5000">~5,000</option>
+          <option value="10000">~1억</option>
+          <option value="10001">1억 이상</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label><i class="fas fa-money-bill-wave"></i>월세 (만원)</label>
+        <select name="rent">
+          <option value="">선택 안함</option>
+          <option value="30">~30</option>
+          <option value="40">~40</option>
+          <option value="50">~50</option>
+          <option value="60">~60</option>
+          <option value="70">~70</option>
+          <option value="80">~80</option>
+          <option value="90">~90</option>
+          <option value="100">~100</option>
+          <option value="101">100 이상</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label><i class="fas fa-chart-area"></i>평수 (평)</label>
+        <select name="area">
+          <option value="">선택 안함</option>
+          <option value="5">~5</option>
+          <option value="10">~10</option>
+          <option value="15">~15</option>
+          <option value="20">~20</option>
+          <option value="25">~25</option>
+          <option value="30">~30</option>
+          <option value="31">30 이상</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label><i class="fas fa-bed"></i>방 개수</label>
+        <input type="number" name="rooms" placeholder="예: 1" min="0" />
+      </div>
+
+      <div class="button-group">
+        <a href="detail_filters.html" class="detail-filters-button"><i class="fas fa-cogs"></i> 상세 필터 (기타 옵션)</a>
+        <button type="submit" class="submit-button">매물 찾기</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
