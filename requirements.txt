@@ -92,4 +92,3 @@ win_inet_pton @ file:///D:/bld/win_inet_pton_1733130564612/work
 xyzservices==2025.4.0
 zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1749421620841/work
 zstandard==0.23.0
-folium
