@@ -7,6 +7,16 @@ from PIL import Image
 # Streamlit 앱 제목 설정
 
 st.title("나의 원룸 조건")
+
+st.markdown("""
+<style>
+section[data-testid="stSidebar"] {
+    width: 400px !important; # 원하는 너비로 조절
+}
+</style>
+""", unsafe_allow_html=True)
+
+
 img = Image.open('./images2/room.jpg')
 
 # 사이드바 시작
@@ -16,7 +26,7 @@ with st.sidebar:
     st.header("매물 정보")
 
     st.subheader("방사진")
-    st.image(img, width=300, caption='room')
+    st.image(img, width=350, caption='room')
     
     
     st.subheader("주소")
@@ -68,6 +78,6 @@ for index, row in st_df_map.iterrows():
         icon=folium.Icon(color='green', icon='coffee', prefix='fa')
     ).add_to(m)
 
-# 3. Streamlit에 지도 표시
+
 # st_folium.st_folium() 함수를 사용하여 folium 지도를 Streamlit에 렌더링
-st_folium(m, width=1500, height=800)
+st_folium(m, width=1600, height=800)
