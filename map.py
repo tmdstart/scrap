@@ -1,6 +1,5 @@
 import streamlit as st
 import folium
-import requests
 from pandas import json_normalize
 from streamlit_folium import st_folium
 from PIL import Image
@@ -13,26 +12,26 @@ img = Image.open('./images2/room.jpg')
 with st.sidebar:
     
     
-    st.header("🏠 매물 정보")
+    st.header("매물 정보")
 
-    st.subheader("📸 방사진")
+    st.subheader("방사진")
     st.image(img, width=300, caption='room')
     
     
-    st.subheader("📍 주소")
+    st.subheader("주소")
     st.write("영등포구 달빛로 145-14 삼동빌라 502호")
     
 
-    st.subheader("📐 면적")
+    st.subheader("면적")
     st.write("25m²")
     
-    st.subheader("💰 보증금")
+    st.subheader("보증금")
     st.write("2,000만 원")
     
-    st.subheader("💵 월세")
+    st.subheader("월세")
     st.write("40만 원")
     
-    st.subheader("🧹 관리비")
+    st.subheader("관리비")
     st.write("5만 원")
     
 st.set_page_config(layout="wide")
@@ -56,7 +55,6 @@ st_df_map = st_df[['s_name', 'lat', 'lot']]
 st_df_map['lat'] = st_df_map['lat'].astype(float)
 st_df_map['lot'] = st_df_map['lot'].astype(float)
 
-# 2. folium 지도 생성 및 마커 추가
 # 서울 중심부를 기준으로 지도 초기화
 m = folium.Map(location=loc, zoom_start=12)
 
@@ -64,7 +62,7 @@ for index, row in st_df_map.iterrows():
     popup_text = f"{row['s_name']}"
     folium.Marker(
         location=[row['lat'], row['lot']],
-        popup=folium.Popup(popup_text, max_width=1500),
+        popup=folium.Popup(popup_text, max_width=300),
         tooltip=row['s_name'],
         icon=folium.Icon(color='green', icon='coffee', prefix='fa')
     ).add_to(m)
