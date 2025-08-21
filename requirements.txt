@@ -4,3 +4,4 @@ numpy
 matplotlib
 PIL
 folium
+streamlit_folium
