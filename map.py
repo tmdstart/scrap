@@ -1,5 +1,6 @@
 import streamlit as st
 import folium
+import requests
 from pandas import json_normalize
 from streamlit_folium import st_folium
 from PIL import Image

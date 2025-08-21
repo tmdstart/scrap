@@ -5,3 +5,4 @@ matplotlib
 Pillow
 folium
 streamlit_folium
+requests
