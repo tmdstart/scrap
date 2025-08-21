@@ -29,14 +29,11 @@ with st.sidebar:
     st.subheader("💰 보증금")
     st.write("2,000만 원")
     
-  
     st.subheader("💵 월세")
     st.write("40만 원")
     
-
     st.subheader("🧹 관리비")
     st.write("5만 원")
-    
     
 st.set_page_config(layout="wide")
 
